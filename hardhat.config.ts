@@ -26,7 +26,7 @@ const getRpcUrl = (network) => {
   const defaultRpcs = {
     arbitrum: "https://arb1.arbitrum.io/rpc",
     avalanche: "https://api.avax.network/ext/bc/C/rpc",
-    arbitrumGoerli: "https://goerli-rollup.arbitrum.io/rpc",
+    arbitrumSepolia: "https://sepolia-rollup.arbitrum.io/rpc",
     avalancheFuji: "https://api.avax-test.network/ext/bc/C/rpc",
     snowtrace: "https://api.avax.network/ext/bc/C/rpc",
   };
@@ -126,13 +126,13 @@ const config: HardhatUserConfig = {
       url: getRpcUrl("snowtrace"),
       accounts: getEnvAccounts(),
     },
-    arbitrumGoerli: {
-      url: getRpcUrl("arbitrumGoerli"),
-      chainId: 421613,
+    arbitrumSepolia: {
+      url: getRpcUrl("arbitrumSepolia"),
+      chainId: 421614,
       accounts: getEnvAccounts(),
       verify: {
         etherscan: {
-          apiUrl: "https://api-goerli.arbiscan.io/",
+          apiUrl: "https://api-sepolia.arbiscan.io/",
           apiKey: process.env.ARBISCAN_API_KEY,
         },
       },
@@ -159,11 +159,19 @@ const config: HardhatUserConfig = {
       // hardhat-etherscan plugin uses "avalancheFujiTestnet" name
       arbitrumOne: process.env.ARBISCAN_API_KEY,
       avalanche: process.env.SNOWTRACE_API_KEY,
-      arbitrumGoerli: process.env.ARBISCAN_API_KEY,
+      arbitrumSepolia: process.env.ARBISCAN_API_KEY,
       avalancheFujiTestnet: process.env.SNOWTRACE_API_KEY,
       snowtrace: "snowtrace", // apiKey is not required, just set a placeholder
     },
     customChains: [
+      {
+        network: "arbitrumSepolia",
+        chainId: 421614,
+        urls: {
+          apiURL: "https://api-sepolia.arbiscan.io/",
+          browserURL: "https://sepolia.arbiscan.io",
+        },
+      },
       {
         network: "snowtrace",
         chainId: 43114,
