@@ -26,7 +26,7 @@ function getArbitrumValues() {
 function getValues() {
   if (hre.network.name === "avalancheFuji") {
     return getAvalancheFujiValues();
-  } else if (hre.network.name === "arbitrumGoerli") {
+  } else if (hre.network.name === "arbitrumSepolia") {
     return getArbibtrumGoerliValues();
   } else if (hre.network.name === "arbitrum") {
     return getArbitrumValues();

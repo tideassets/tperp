@@ -83,7 +83,7 @@ const func = async ({ deployments, gmx }: HardhatRuntimeEnvironment) => {
 };
 
 func.skip = async ({ network }: HardhatRuntimeEnvironment) => {
-  return !["arbitrumGoerli"].includes(network.name);
+  return !["arbitrumSepolia"].includes(network.name);
 };
 func.id = "fixVirtualInventoryForSwaps2";
 func.tags = ["FixVirtualInventoryForSwaps2"];

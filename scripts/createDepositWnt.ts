@@ -15,7 +15,7 @@ async function getValues(): Promise<{
     return {
       wnt: await ethers.getContractAt("WNT", "0x1D308089a2D1Ced3f1Ce36B1FcaF815b07217be3"),
     };
-  } else if (hre.network.name === "arbitrumGoerli") {
+  } else if (hre.network.name === "arbitrumSepolia") {
     return {
       wnt: await ethers.getContractAt("WNT", "0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3"),
     };

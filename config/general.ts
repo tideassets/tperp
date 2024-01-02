@@ -86,7 +86,7 @@ export default async function ({ network }: HardhatRuntimeEnvironment) {
   };
 
   const networkConfig = {
-    arbitrumGoerli: {
+    arbitrumSepolia: {
       requestExpirationBlockAge: 1200, // about 5 minutes assuming 4 blocks per second
     },
     avalancheFuji: {

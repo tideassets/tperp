@@ -259,7 +259,7 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<OracleCo
       },
     },
 
-    arbitrumGoerli: {
+    arbitrumSepolia: {
       realtimeFeedVerifier: "0x09DFf56A4fF44e0f4436260A04F5CFa65636A481",
       signers: ["0xFb11f15f206bdA02c224EDC744b0E50E46137046", "0x23247a1A80D01b9482E9d734d2EB780a3b5c8E6c"],
       maxOraclePriceAge: 5 * 60,

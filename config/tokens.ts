@@ -204,7 +204,7 @@ const config: {
       transferGasLimit: 200 * 1000,
     },
   },
-  arbitrumGoerli: {
+  arbitrumSepolia: {
     WETH: {
       address: "0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3",
       decimals: 18,

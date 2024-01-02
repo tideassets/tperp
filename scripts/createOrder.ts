@@ -17,7 +17,7 @@ import { contractAt } from "../utils/deploy";
 //
 // then run:
 //
-// REALTIME_FEED_CLIENT_ID=<clien-id> REALTIME_FEED_CLIENT_SECRET=<client-secret> ACCOUNT_KEY_FILE=key-file.json npx hardhat run --network arbitrumGoerli scripts/createOrder.ts
+// REALTIME_FEED_CLIENT_ID=<clien-id> REALTIME_FEED_CLIENT_SECRET=<client-secret> ACCOUNT_KEY_FILE=key-file.json npx hardhat run --network arbitrumSepolia scripts/createOrder.ts
 //
 // after running the script the position should be viewable on
 // https://chainlink-workshop.gmx-interface.pages.dev/#/actions/v2/<your account address>

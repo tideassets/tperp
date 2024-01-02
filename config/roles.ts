@@ -156,7 +156,7 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<RolesCon
         "0xA60862ecc8bd976519e56231bDfAF697C5ce2156": true, // SubaccountRouter1
       },
     },
-    arbitrumGoerli: testnetConfig,
+    arbitrumSepolia: testnetConfig,
     avalancheFuji: testnetConfig,
   };
 

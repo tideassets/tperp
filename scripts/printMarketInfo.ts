@@ -23,7 +23,7 @@ function getTickersUrl() {
     return "https://arbitrum-api.gmxinfra.io/prices/tickers";
   } else if (networkName === "avalanche") {
     return "https://avalanche-api.gmxinfra.io/prices/tickers";
-  } else if (networkName === "arbitrumGoerli") {
+  } else if (networkName === "arbitrumSepolia") {
     return "https://gmx-synthetics-api-arb-goerli-4vgxk.ondigitalocean.app/prices/tickers";
   } else if (networkName === "avalancheFuji") {
     return "https://synthetics-api-avax-fuji-upovm.ondigitalocean.app/prices/tickers";

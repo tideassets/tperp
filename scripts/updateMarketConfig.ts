@@ -414,7 +414,7 @@ const processMarkets = async ({ markets, onchainMarketsByTokens, tokens, general
 };
 
 async function main() {
-  if (!["arbitrumGoerli", "avalancheFuji"].includes(network.name)) {
+  if (!["arbitrumSepolia", "avalancheFuji"].includes(network.name)) {
     const { errors } = await validateMarketConfigs();
     if (errors.length !== 0) {
       throw new Error("Invalid market configs");
