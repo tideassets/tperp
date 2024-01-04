@@ -260,8 +260,8 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<OracleCo
     },
 
     arbitrumSepolia: {
-      realtimeFeedVerifier: "0x09DFf56A4fF44e0f4436260A04F5CFa65636A481",
-      signers: ["0xFb11f15f206bdA02c224EDC744b0E50E46137046", "0x23247a1A80D01b9482E9d734d2EB780a3b5c8E6c"],
+      realtimeFeedVerifier: "0x459B6D031C7871B50683dC309E9b18fb71D597F0",
+      signers: ["0x077A79ab65cAAbAa684f34Cc22aCa911742690E0"],
       maxOraclePriceAge: 5 * 60,
       maxRefPriceDeviationFactor: decimalToFloat(5, 1), // 50%
       minOracleBlockConfirmations: 255,
@@ -271,21 +271,21 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<OracleCo
       tokens: {
         USDC: {
           priceFeed: {
-            address: "0x1692Bdd32F31b831caAc1b0c9fAF68613682813b",
+            address: "0x0153002d20B96532C639313c2d54c3dA09109309",
             decimals: 8,
             heartbeatDuration: 3 * 24 * 60 * 60,
           },
         },
         USDT: {
           priceFeed: {
-            address: "0x0a023a3423D9b27A0BE48c768CCF2dD7877fEf5E",
+            address: "0x80EDee6f667eCc9f63a0a6f55578F870651f06A4",
             decimals: 8,
             heartbeatDuration: 3 * 24 * 60 * 60,
           },
         },
         DAI: {
           priceFeed: {
-            address: "0x103b53E977DA6E4Fa92f76369c8b7e20E7fb7fe1",
+            address: "0xb113F5A928BCfF189C998ab20d753a47F9dE5A61",
             decimals: 8,
             heartbeatDuration: 3 * 24 * 60 * 60,
           },

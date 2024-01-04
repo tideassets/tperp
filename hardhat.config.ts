@@ -6,8 +6,9 @@ import path from "path";
 import fs from "fs";
 import { ethers } from "ethers";
 
+import "@nomicfoundation/hardhat-verify";
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
+// import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-contract-sizer";
 import "solidity-coverage";
 import "hardhat-gas-reporter";
@@ -26,7 +27,7 @@ const getRpcUrl = (network) => {
   const defaultRpcs = {
     arbitrum: "https://arb1.arbitrum.io/rpc",
     avalanche: "https://api.avax.network/ext/bc/C/rpc",
-    arbitrumSepolia: "https://sepolia-rollup.arbitrum.io/rpc",
+    arbitrumSepolia: "https://arbitrum-sepolia.infura.io/v3/1c177df366ef47b689e8b84ee6c7297d",
     avalancheFuji: "https://api.avax-test.network/ext/bc/C/rpc",
     snowtrace: "https://api.avax.network/ext/bc/C/rpc",
   };
@@ -53,7 +54,7 @@ const getEnvAccounts = () => {
 
   if (ACCOUNT_KEY_FILE) {
     const filepath = path.join("./keys/", ACCOUNT_KEY_FILE);
-    const data = JSON.parse(fs.readFileSync(filepath));
+    const data = JSON.parse(fs.readFileSync(filepath).toString());
     if (!data) {
       throw new Error("Invalid key file");
     }
@@ -168,7 +169,7 @@ const config: HardhatUserConfig = {
         network: "arbitrumSepolia",
         chainId: 421614,
         urls: {
-          apiURL: "https://api-sepolia.arbiscan.io/",
+          apiURL: "https://api-sepolia.arbiscan.io/api",
           browserURL: "https://sepolia.arbiscan.io",
         },
       },

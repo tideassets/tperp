@@ -46,8 +46,8 @@ export default async function ({ network }: HardhatRuntimeEnvironment) {
   }
 
   const generalConfig = {
-    feeReceiver: "0x43ce1d475e06c65dd879f4ec644b8e0e10ff2b6d",
-    holdingAddress: "0x3f59203ea1c66527422998b54287e1efcacbe2c5",
+    feeReceiver: "0x077A79ab65cAAbAa684f34Cc22aCa911742690E0",
+    holdingAddress: "0x077A79ab65cAAbAa684f34Cc22aCa911742690E0",
     maxUiFeeFactor: decimalToFloat(2, 4), // 0.0002, 0.02%
     minHandleExecutionErrorGas: 1_200_000,
     minHandleExecutionErrorGasToForward: 1_000_000, // measured gas required for an order cancellation: ~600,000
@@ -88,6 +88,8 @@ export default async function ({ network }: HardhatRuntimeEnvironment) {
   const networkConfig = {
     arbitrumSepolia: {
       requestExpirationBlockAge: 1200, // about 5 minutes assuming 4 blocks per second
+      estimatedGasFeeBaseAmount: 8_000_000,
+      executionGasFeeBaseAmount: 8_000_000,
     },
     avalancheFuji: {
       requestExpirationBlockAge: 150, // about 5 minutes assuming 1 block per 2 seconds

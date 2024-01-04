@@ -206,31 +206,32 @@ const config: {
   },
   arbitrumSepolia: {
     WETH: {
-      address: "0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3",
+      address: "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",
       decimals: 18,
       wrappedNative: true,
       transferGasLimit: 200 * 1000,
-      realtimeFeedId: "0x4554482d5553442d415242495452554d2d544553544e45540000000000000000",
+      // realtimeFeedId: "0x4554482d5553442d415242495452554d2d544553544e45540000000000000000",
       realtimeFeedDecimals: 8,
     },
     BTC: {
       synthetic: true,
       decimals: 8,
-      realtimeFeedId: "0x4254432d5553442d415242495452554d2d544553544e45540000000000000000",
+      // realtimeFeedId: "0x4254432d5553442d415242495452554d2d544553544e45540000000000000000",
       realtimeFeedDecimals: 8,
     },
     WBTC: {
+      synthetic: true,
       decimals: 8,
-      transferGasLimit: 200 * 1000,
-      address: "0xCcF73F4Dcbbb573296BFA656b754Fe94BB957d62",
-      realtimeFeedId: "0x4254432d5553442d415242495452554d2d544553544e45540000000000000000",
+      // transferGasLimit: 200 * 1000,
+      // address: "0xCcF73F4Dcbbb573296BFA656b754Fe94BB957d62",
+      // realtimeFeedId: "0x4254432d5553442d415242495452554d2d544553544e45540000000000000000",
       realtimeFeedDecimals: 8,
     },
     USDC: {
       decimals: 6,
       transferGasLimit: 200 * 1000,
-      address: "0x04FC936a15352a1b15b3B9c56EA002051e3DB3e5",
-      realtimeFeedId: "0x555344432d5553442d415242495452554d2d544553544e455400000000000000",
+      address: "0x745Ff54fE673F9d66d77e46E962Aa9a24bf81c6b",
+      // realtimeFeedId: "0x555344432d5553442d415242495452554d2d544553544e455400000000000000",
       realtimeFeedDecimals: 8,
     },
     SOL: {
@@ -240,15 +241,15 @@ const config: {
     USDT: {
       decimals: 6,
       transferGasLimit: 200 * 1000,
-      address: "0xBFcBcdCbcc1b765843dCe4DF044B92FE68182a62",
-      realtimeFeedId: "0x12be1859ee43f46bab53750915f20855f54e891f88ddd524f26a72d6f4deed1d",
+      address: "0x909043f0e3e079023027aff15e8e34fa6aa9a960",
+      // realtimeFeedId: "0x12be1859ee43f46bab53750915f20855f54e891f88ddd524f26a72d6f4deed1d",
       realtimeFeedDecimals: 8,
     },
     DAI: {
       decimals: 18,
       transferGasLimit: 200 * 1000,
-      address: "0x7b7c6c49fA99b37270077FBFA398748c27046984",
-      realtimeFeedId: "0xbf1febc8c335cb236c1995c1007a928a3f7ae8307a1a20cb31334e6d316c62d1",
+      address: "0x815da3991757df83821a27cfd51e1be24084c309",
+      // realtimeFeedId: "0xbf1febc8c335cb236c1995c1007a928a3f7ae8307a1a20cb31334e6d316c62d1",
       realtimeFeedDecimals: 8,
     },
     TEST: {
@@ -258,19 +259,19 @@ const config: {
     BNB: {
       decimals: 18,
       synthetic: true,
-      realtimeFeedId: "0x26c16f2054b7a1d77ae83a0429dace9f3000ba4dbf1690236e8f575742e98f66",
+      // realtimeFeedId: "0x26c16f2054b7a1d77ae83a0429dace9f3000ba4dbf1690236e8f575742e98f66",
       realtimeFeedDecimals: 8,
     },
     DOGE: {
       decimals: 8,
       synthetic: true,
-      realtimeFeedId: "0x4ce52cf28e49f4673198074968aeea280f13b5f897c687eb713bcfc1eeab89ba",
+      // realtimeFeedId: "0x4ce52cf28e49f4673198074968aeea280f13b5f897c687eb713bcfc1eeab89ba",
       realtimeFeedDecimals: 8,
     },
     LINK: {
       decimals: 18,
       synthetic: true,
-      realtimeFeedId: "0x14e044f932bb959cc2aa8dc1ba110c09224e639aae00264c1ffc2a0830904a3c",
+      // realtimeFeedId: "0x14e044f932bb959cc2aa8dc1ba110c09224e639aae00264c1ffc2a0830904a3c",
       realtimeFeedDecimals: 8,
     },
     ADA: {

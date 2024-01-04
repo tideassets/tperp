@@ -3,7 +3,7 @@ import fs from "fs";
 export function readJsonFile(path) {
   try {
     const content = fs.readFileSync(path);
-    return JSON.parse(content);
+    return JSON.parse(content.toString());
   } catch {
     return undefined;
   }

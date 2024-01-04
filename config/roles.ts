@@ -32,8 +32,8 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<RolesCon
   };
 
   const testnetAdmins = {
-    "0xC84f3398eDf6336E1Ef55b50Ca3F9f9f96B8b504": true,
-    "0xFb11f15f206bdA02c224EDC744b0E50E46137046": true,
+    "0x077A79ab65cAAbAa684f34Cc22aCa911742690E0": true,
+    // "0x077A79ab65cAAbAa684f34Cc22aCa911742690E0": true,
   };
 
   const testnetConfig = {
