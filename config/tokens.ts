@@ -211,9 +211,17 @@ const config: {
       transferGasLimit: 200 * 1000,
     },
   },
+  //  reserveAddresses["DAI"]["arbitrum-sepolia"] = 0x9714e454274dC66BE57FA8361233221a376f4C2e;
+  // reserveAddresses["LINK"]["arbitrum-sepolia"] = 0xaB7A6599C1804443C04c998D2be87Dc00A8c07bA;
+  // reserveAddresses["USDC"]["arbitrum-sepolia"] = 0x39E618D761fdD06bF65065d2974128aAeC7b3Fed;
+  // reserveAddresses["WBTC"]["arbitrum-sepolia"] = 0x4Ac0ED77C4375D48B51D56cc49b7710c3640b9c2;
+  // reserveAddresses["WETH"]["arbitrum-sepolia"] = 0xceBD1a3E9aaD7E60eDD509809e7f9cFF449b7851;
+  // reserveAddresses["USDT"]["arbitrum-sepolia"] = 0x0000000000000000000000000000000000000000;
+  // reserveAddresses["AAVE"]["arbitrum-sepolia"] = 0x0FDc113b620F994fa7FE03b7454193f519494D40;
+  // reserveAddresses["EURS"]["arbitrum-sepolia"] = 0x0000000000000000000000000000000000000000;
   arbitrumSepolia: {
     WETH: {
-      address: "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",
+      address: "0xceBD1a3E9aaD7E60eDD509809e7f9cFF449b7851",
       decimals: 18,
       wrappedNative: true,
       transferGasLimit: 200 * 1000,
@@ -227,17 +235,17 @@ const config: {
       realtimeFeedDecimals: 8,
     },
     WBTC: {
-      synthetic: true,
+      // synthetic: true,
       decimals: 8,
-      // transferGasLimit: 200 * 1000,
-      // address: "0xCcF73F4Dcbbb573296BFA656b754Fe94BB957d62",
+      transferGasLimit: 200 * 1000,
+      address: "0x4Ac0ED77C4375D48B51D56cc49b7710c3640b9c2",
       // realtimeFeedId: "0x4254432d5553442d415242495452554d2d544553544e45540000000000000000",
       realtimeFeedDecimals: 8,
     },
     USDC: {
       decimals: 6,
       transferGasLimit: 200 * 1000,
-      address: "0x745Ff54fE673F9d66d77e46E962Aa9a24bf81c6b",
+      address: "0x39E618D761fdD06bF65065d2974128aAeC7b3Fed",
       // realtimeFeedId: "0x555344432d5553442d415242495452554d2d544553544e455400000000000000",
       realtimeFeedDecimals: 8,
     },
@@ -255,7 +263,7 @@ const config: {
     DAI: {
       decimals: 18,
       transferGasLimit: 200 * 1000,
-      address: "0x815da3991757df83821a27cfd51e1be24084c309",
+      address: "0x9714e454274dC66BE57FA8361233221a376f4C2e",
       // realtimeFeedId: "0xbf1febc8c335cb236c1995c1007a928a3f7ae8307a1a20cb31334e6d316c62d1",
       realtimeFeedDecimals: 8,
     },
@@ -278,6 +286,7 @@ const config: {
     LINK: {
       decimals: 18,
       synthetic: true,
+      // address: "0xaB7A6599C1804443C04c998D2be87Dc00A8c07bA",
       // realtimeFeedId: "0x14e044f932bb959cc2aa8dc1ba110c09224e639aae00264c1ffc2a0830904a3c",
       realtimeFeedDecimals: 8,
     },
