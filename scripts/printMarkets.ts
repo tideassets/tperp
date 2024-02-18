@@ -10,6 +10,7 @@ async function main() {
       address = (await hre.ethers.getContract(tokenSymbol)).address;
     }
     addressToSymbol[address] = tokenSymbol;
+    console.log("%s %s", tokenSymbol, address);
   }
 
   const reader = await hre.ethers.getContract("Reader");

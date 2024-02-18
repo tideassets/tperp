@@ -272,15 +272,23 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<OracleCo
       maxOraclePriceAge: 5 * 60,
       maxRefPriceDeviationFactor: decimalToFloat(5, 1), // 50%
       minOracleBlockConfirmations: 255,
-      minOracleSigners: 1,
+      minOracleSigners: 0,
 
       // price feeds https://docs.chain.link/data-feeds/price-feeds/addresses/?network=arbitrum#Arbitrum%20Goerli
       tokens: {
+        WETH: {
+          priceFeed: {
+            address: "0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612",
+            decimals: 8,
+            heartbeatDuration: (24 + 1) * 60 * 60,
+          },
+        },
         USDC: {
           priceFeed: {
             address: "0x0153002d20B96532C639313c2d54c3dA09109309",
             decimals: 8,
             heartbeatDuration: 3 * 24 * 60 * 60,
+            stablePrice: decimalToFloat(1),
           },
         },
         USDT: {
@@ -288,6 +296,7 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<OracleCo
             address: "0x80EDee6f667eCc9f63a0a6f55578F870651f06A4",
             decimals: 8,
             heartbeatDuration: 3 * 24 * 60 * 60,
+            stablePrice: decimalToFloat(1),
           },
         },
         DAI: {
@@ -295,6 +304,7 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<OracleCo
             address: "0xb113F5A928BCfF189C998ab20d753a47F9dE5A61",
             decimals: 8,
             heartbeatDuration: 3 * 24 * 60 * 60,
+            stablePrice: decimalToFloat(1),
           },
         },
       },

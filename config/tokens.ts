@@ -249,17 +249,17 @@ const config: {
       // realtimeFeedId: "0x555344432d5553442d415242495452554d2d544553544e455400000000000000",
       realtimeFeedDecimals: 8,
     },
-    SOL: {
-      synthetic: true,
-      decimals: 18,
-    },
-    USDT: {
-      decimals: 6,
-      transferGasLimit: 200 * 1000,
-      address: "0x909043f0e3e079023027aff15e8e34fa6aa9a960",
-      // realtimeFeedId: "0x12be1859ee43f46bab53750915f20855f54e891f88ddd524f26a72d6f4deed1d",
-      realtimeFeedDecimals: 8,
-    },
+    // SOL: {
+    //   synthetic: true,
+    //   decimals: 18,
+    // },
+    // USDT: {
+    //   decimals: 6,
+    //   transferGasLimit: 200 * 1000,
+    //   address: "0x909043f0e3e079023027aff15e8e34fa6aa9a960",
+    //   // realtimeFeedId: "0x12be1859ee43f46bab53750915f20855f54e891f88ddd524f26a72d6f4deed1d",
+    //   realtimeFeedDecimals: 8,
+    // },
     DAI: {
       decimals: 18,
       transferGasLimit: 200 * 1000,
@@ -271,45 +271,45 @@ const config: {
       synthetic: true,
       decimals: 18,
     },
-    BNB: {
-      decimals: 18,
-      synthetic: true,
-      // realtimeFeedId: "0x26c16f2054b7a1d77ae83a0429dace9f3000ba4dbf1690236e8f575742e98f66",
-      realtimeFeedDecimals: 8,
-    },
-    DOGE: {
-      decimals: 8,
-      synthetic: true,
-      // realtimeFeedId: "0x4ce52cf28e49f4673198074968aeea280f13b5f897c687eb713bcfc1eeab89ba",
-      realtimeFeedDecimals: 8,
-    },
-    LINK: {
-      decimals: 18,
-      synthetic: true,
-      // address: "0xaB7A6599C1804443C04c998D2be87Dc00A8c07bA",
-      // realtimeFeedId: "0x14e044f932bb959cc2aa8dc1ba110c09224e639aae00264c1ffc2a0830904a3c",
-      realtimeFeedDecimals: 8,
-    },
-    ADA: {
-      decimals: 18,
-      synthetic: true,
-    },
-    DOT: {
-      decimals: 18,
-      synthetic: true,
-    },
-    MATIC: {
-      decimals: 18,
-      synthetic: true,
-    },
-    UNI: {
-      decimals: 18,
-      synthetic: true,
-    },
-    TRX: {
-      decimals: 18,
-      synthetic: true,
-    },
+    // BNB: {
+    //   decimals: 18,
+    //   synthetic: true,
+    //   // realtimeFeedId: "0x26c16f2054b7a1d77ae83a0429dace9f3000ba4dbf1690236e8f575742e98f66",
+    //   realtimeFeedDecimals: 8,
+    // },
+    // DOGE: {
+    //   decimals: 8,
+    //   synthetic: true,
+    //   // realtimeFeedId: "0x4ce52cf28e49f4673198074968aeea280f13b5f897c687eb713bcfc1eeab89ba",
+    //   realtimeFeedDecimals: 8,
+    // },
+    // LINK: {
+    //   decimals: 18,
+    //   synthetic: true,
+    //   // address: "0xaB7A6599C1804443C04c998D2be87Dc00A8c07bA",
+    //   // realtimeFeedId: "0x14e044f932bb959cc2aa8dc1ba110c09224e639aae00264c1ffc2a0830904a3c",
+    //   realtimeFeedDecimals: 8,
+    // },
+    // ADA: {
+    //   decimals: 18,
+    //   synthetic: true,
+    // },
+    // DOT: {
+    //   decimals: 18,
+    //   synthetic: true,
+    // },
+    // MATIC: {
+    //   decimals: 18,
+    //   synthetic: true,
+    // },
+    // UNI: {
+    //   decimals: 18,
+    //   synthetic: true,
+    // },
+    // TRX: {
+    //   decimals: 18,
+    //   synthetic: true,
+    // },
   },
   avalancheFuji: {
     WAVAX: {

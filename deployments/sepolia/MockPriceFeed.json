@@ -1,0 +1,129 @@
+{
+  "address": "0x239716B6F504a3a6dA609B869934290378a7D60d",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "answer",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "latestAnswer",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "latestRoundData",
+      "outputs": [
+        {
+          "internalType": "uint80",
+          "name": "",
+          "type": "uint80"
+        },
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint80",
+          "name": "",
+          "type": "uint80"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int256",
+          "name": "_answer",
+          "type": "int256"
+        }
+      ],
+      "name": "setAnswer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x49716e6885664b6235de4ee8c0e0f0373c210b6fbd4fb289ffcf671a76b11baa",
+  "receipt": {
+    "to": null,
+    "from": "0x077A79ab65cAAbAa684f34Cc22aCa911742690E0",
+    "contractAddress": "0x239716B6F504a3a6dA609B869934290378a7D60d",
+    "transactionIndex": 77,
+    "gasUsed": "130305",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x57965add1917a743430d027aaaea1cbb42c3856db5779f04f2119dbe450c5bf8",
+    "transactionHash": "0x49716e6885664b6235de4ee8c0e0f0373c210b6fbd4fb289ffcf671a76b11baa",
+    "logs": [],
+    "blockNumber": 5305706,
+    "cumulativeGasUsed": "10369280",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "87f006d640e347f3480c2b6072201a00",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"answer\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"latestAnswer\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"latestRoundData\",\"outputs\":[{\"internalType\":\"uint80\",\"name\":\"\",\"type\":\"uint80\"},{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint80\",\"name\":\"\",\"type\":\"uint80\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"int256\",\"name\":\"_answer\",\"type\":\"int256\"}],\"name\":\"setAnswer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/mock/MockPriceFeed.sol\":\"MockPriceFeed\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":10},\"remappings\":[]},\"sources\":{\"contracts/mock/MockPriceFeed.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../oracle/IPriceFeed.sol\\\";\\n\\n// @title MockPriceFeed\\n// @dev Mock price feed for testing and testnets\\ncontract MockPriceFeed is IPriceFeed {\\n    int256 public answer;\\n\\n    // @dev set answer\\n    // @param _answer the answer to set to\\n    function setAnswer(int256 _answer) external {\\n        answer = _answer;\\n    }\\n\\n    function latestAnswer() external view returns (int256) {\\n        return answer;\\n    }\\n\\n    // @dev get the latest data\\n    // @return (roundId, answer, startedAt, updatedAt, answeredInRound)\\n    function latestRoundData() external view returns (\\n        uint80,\\n        int256,\\n        uint256,\\n        uint256,\\n        uint80\\n    ) {\\n        return (\\n            uint80(0), // roundId\\n            answer, // answer\\n            0, // startedAt\\n            block.timestamp - 60, // updatedAt\\n            uint80(0) // answeredInRound\\n        );\\n    }\\n}\\n\",\"keccak256\":\"0x9e8f72ce5e83664be3c6f1f024f480465aa303c80e4b6df9a70f526db9c56809\",\"license\":\"MIT\"},\"contracts/oracle/IPriceFeed.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n// @title IPriceFeed\\n// @dev Interface for a price feed\\ninterface IPriceFeed {\\n    function latestRoundData() external view returns (\\n        uint80 roundId,\\n        int256 answer,\\n        uint256 startedAt,\\n        uint256 updatedAt,\\n        uint80 answeredInRound\\n    );\\n}\\n\",\"keccak256\":\"0xe85508440a7b9fc8b60b2594cc6d3bbc547d62bba1097ee85740faa84a4aae46\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610165806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806350d25bcd1461005157806385bb7d691461006857806399213cd814610071578063feaf968c14610086575b600080fd5b6000545b6040519081526020015b60405180910390f35b61005560005481565b61008461007f3660046100ef565b600055565b005b61008e6100c2565b604080516001600160501b03968716815260208101959095528401929092526060830152909116608082015260a00161005f565b6000806000806000806000546000603c426100dd9190610108565b92989197509550909350600092509050565b60006020828403121561010157600080fd5b5035919050565b8181038181111561012957634e487b7160e01b600052601160045260246000fd5b9291505056fea2646970667358221220e7a8b927e1f6dfdbdc5f1e343ba6fe44c400c2b3ba2cbcfdb72608ee49bac2c764736f6c63430008110033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806350d25bcd1461005157806385bb7d691461006857806399213cd814610071578063feaf968c14610086575b600080fd5b6000545b6040519081526020015b60405180910390f35b61005560005481565b61008461007f3660046100ef565b600055565b005b61008e6100c2565b604080516001600160501b03968716815260208101959095528401929092526060830152909116608082015260a00161005f565b6000806000806000806000546000603c426100dd9190610108565b92989197509550909350600092509050565b60006020828403121561010157600080fd5b5035919050565b8181038181111561012957634e487b7160e01b600052601160045260246000fd5b9291505056fea2646970667358221220e7a8b927e1f6dfdbdc5f1e343ba6fe44c400c2b3ba2cbcfdb72608ee49bac2c764736f6c63430008110033",
+  "libraries": {},
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 47745,
+        "contract": "contracts/mock/MockPriceFeed.sol:MockPriceFeed",
+        "label": "answer",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_int256"
+      }
+    ],
+    "types": {
+      "t_int256": {
+        "encoding": "inplace",
+        "label": "int256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

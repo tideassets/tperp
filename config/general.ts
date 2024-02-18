@@ -87,7 +87,7 @@ export default async function ({ network }: HardhatRuntimeEnvironment) {
 
   const networkConfig = {
     arbitrumSepolia: {
-      requestExpirationBlockAge: 1200, // about 5 minutes assuming 4 blocks per second
+      requestExpirationBlockAge: 4, // about 5 minutes assuming 4 blocks per second
       estimatedGasFeeBaseAmount: 8_000_000,
       executionGasFeeBaseAmount: 8_000_000,
     },

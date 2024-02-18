@@ -1,7 +1,9 @@
 import hre from "hardhat";
 import { Reader } from "../typechain-types";
+import { expandDecimals } from "../utils/math";
 import got from "got";
 import { toLoggableObject } from "../utils/print";
+import { getPositionCount, getPositionKeys } from "../utils/position";
 const ethers = hre.ethers;
 
 function getAvalancheFujiValues() {
@@ -30,6 +32,10 @@ function getValues() {
     return getArbibtrumGoerliValues();
   } else if (hre.network.name === "arbitrum") {
     return getArbitrumValues();
+  } else if (hre.network.name === "localhost") {
+    return {
+      oracleApi: "https://arbitrum-api.gmxinfra.io/",
+    };
   }
   throw new Error("Unsupported network");
 }
@@ -38,6 +44,10 @@ async function main() {
   const { oracleApi, referralStorageAddress: _referralStorageAddess } = getValues();
 
   const dataStoreDeployment = await hre.deployments.get("DataStore");
+  const dataStore = await hre.ethers.getContractAt("DataStore", dataStoreDeployment.address);
+  const positionCount = await getPositionCount(dataStore);
+  const positionKeys = await getPositionKeys(dataStore, 0, positionCount);
+  const referralStorage = await hre.ethers.getContract("ReferralStorage");
 
   let referralStorageAddress = _referralStorageAddess;
   if (!referralStorageAddress) {
@@ -49,65 +59,64 @@ async function main() {
   }
 
   const reader = (await hre.ethers.getContract("Reader")) as Reader;
-  const positionKey = process.env.POSITION_KEY;
+  for (const positionKey of positionKeys) {
+    const position = await reader.getPosition(dataStoreDeployment.address, positionKey);
 
-  if (!positionKey) {
-    throw new Error("POSITION_KEY is required");
-  }
-
-  const position = await reader.getPosition(dataStoreDeployment.address, positionKey);
-
-  if (position.addresses.market === ethers.constants.AddressZero) {
-    console.log("position %s does not exist", positionKey);
-    return;
-  }
-
-  console.log("position", toLoggableObject(position));
-
-  const marketAddress = position.addresses.market;
-  const market = await reader.getMarket(dataStoreDeployment.address, marketAddress);
-
-  console.log("market %s %s %s", market.indexToken, market.longToken, market.shortToken);
-
-  const tickers: any[] = await got(`${oracleApi}prices/tickers`).json();
-
-  const prices = ["index", "long", "short"].reduce((acc, key) => {
-    const token = market[`${key}Token`];
-    const priceData = tickers.find((data) => {
-      return data.tokenAddress === token;
-    });
-    let minPrice;
-    let maxPrice;
-    if (priceData) {
-      minPrice = priceData.minPrice;
-      maxPrice = priceData.minPrice;
-    } else {
-      throw new Error(`no price data for ${key} token ${token}`);
+    if (position.addresses.market === ethers.constants.AddressZero) {
+      console.log("position %s does not exist", positionKey);
+      return;
     }
-    acc[`${key}TokenPrice`] = {
-      min: minPrice,
-      max: maxPrice,
-    };
-    return acc;
-  }, {} as any[]);
 
-  console.log("prices", toLoggableObject(prices));
+    console.log("position", toLoggableObject(position));
 
-  console.log("reader %s", reader.address);
-  console.log("dataStore %s", dataStoreDeployment.address);
-  console.log("referralStorageAddress %s", referralStorageAddress);
+    const marketAddress = position.addresses.market;
+    const market = await reader.getMarket(dataStoreDeployment.address, marketAddress);
 
-  const positionInfo = await reader.getPositionInfo(
-    dataStoreDeployment.address,
-    referralStorageAddress,
-    positionKey,
-    prices as any,
-    0,
-    ethers.constants.AddressZero,
-    true
-  );
+    console.log("market %s %s %s", market.indexToken, market.longToken, market.shortToken);
 
-  console.log(toLoggableObject(positionInfo));
+    // const tickers: any[] = await got(`${oracleApi}prices/tickers`).json();
+
+    // const prices = ["index", "long", "short"].reduce((acc, key) => {
+    //   const token = market[`${key}Token`];
+    //   const priceData = tickers.find((data) => {
+    //     return data.tokenAddress === token;
+    //   });
+    //   let minPrice;
+    //   let maxPrice;
+    //   if (priceData) {
+    //     minPrice = priceData.minPrice;
+    //     maxPrice = priceData.minPrice;
+    //   } else {
+    //     throw new Error(`no price data for ${key} token ${token}`);
+    //   }
+    //   acc[`${key}TokenPrice`] = {
+    //     min: minPrice,
+    //     max: maxPrice,
+    //   };
+    //   return acc;
+    // }, {} as any[]);
+    const wethPrice = { min: expandDecimals(2000, 4), max: expandDecimals(2000, 4) };
+    const usdcPrice = { min: expandDecimals(1, 6), max: expandDecimals(1, 6) };
+    const prices = { indexTokenPrice: wethPrice, longTokenPrice: wethPrice, shortTokenPrice: usdcPrice };
+
+    console.log("prices", toLoggableObject(prices));
+
+    console.log("reader %s", reader.address);
+    console.log("dataStore %s", dataStoreDeployment.address);
+    console.log("referralStorageAddress %s", referralStorage.address);
+
+    const positionInfo = await reader.getPositionInfo(
+      dataStoreDeployment.address,
+      referralStorage.address,
+      positionKey,
+      prices as any,
+      0,
+      ethers.constants.AddressZero,
+      true
+    );
+
+    console.log("position info:", toLoggableObject(positionInfo));
+  }
 }
 
 main()

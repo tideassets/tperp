@@ -3,7 +3,7 @@ import hre from "hardhat";
 import { getMarketTokenAddress, DEFAULT_MARKET_TYPE } from "../utils/market";
 import { bigNumberify, expandDecimals } from "../utils/math";
 import { WNT, ExchangeRouter, MintableToken } from "../typechain-types";
-import { BaseOrderUtils } from "../typechain-types/contracts/router/ExchangeRouter";
+import { IBaseOrderUtils } from "../typechain-types/contracts/router/ExchangeRouter";
 
 const { ethers } = hre;
 
@@ -78,8 +78,9 @@ async function main() {
   );
   console.log("market %s", wethUsdMarketAddress);
 
-  const params: BaseOrderUtils.CreateOrderParamsStruct = {
+  const params: IBaseOrderUtils.CreateOrderParamsStruct = {
     addresses: {
+      uiFeeReceiver: ethers.constants.AddressZero,
       receiver: wallet.address,
       callbackContract: ethers.constants.AddressZero,
       market: wethUsdMarketAddress,
@@ -88,8 +89,8 @@ async function main() {
     },
     numbers: {
       sizeDeltaUsd: expandDecimals(20, 30),
-      triggerPrice: expandDecimals(1200, 8), // WETH oraclePrecision = 8
-      acceptablePrice: expandDecimals(1500, 30),
+      triggerPrice: expandDecimals(2200, 8), // WETH oraclePrecision = 8
+      acceptablePrice: expandDecimals(2500, 30),
       executionFee,
       callbackGasLimit: 0,
       minOutputAmount: 0,
@@ -99,6 +100,7 @@ async function main() {
     isLong: true, // not relevant for market swap
     shouldUnwrapNativeToken: false, // not relevant for market swap
     decreasePositionSwapType: 0, // no swap
+    referralCode: ethers.constants.HashZero,
   };
   console.log("exchange router %s", exchangeRouter.address);
   console.log("order store %s", orderVault.address);
@@ -107,7 +109,7 @@ async function main() {
   const multicallArgs = [
     exchangeRouter.interface.encodeFunctionData("sendWnt", [orderVault.address, executionFee]),
     exchangeRouter.interface.encodeFunctionData("sendTokens", [weth.address, orderVault.address, longTokenAmount]),
-    exchangeRouter.interface.encodeFunctionData("createOrder", [params, ethers.constants.HashZero]),
+    exchangeRouter.interface.encodeFunctionData("createOrder", [params]),
   ];
   console.log("multicall args", multicallArgs);
 

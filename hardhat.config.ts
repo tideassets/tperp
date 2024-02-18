@@ -7,6 +7,7 @@ import fs from "fs";
 import { ethers } from "ethers";
 
 import "@nomicfoundation/hardhat-verify";
+import "@nomicfoundation/hardhat-chai-matchers";
 import { HardhatUserConfig } from "hardhat/config";
 // import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-contract-sizer";
@@ -90,6 +91,7 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       saveDeployments: true,
+      chainId: 31337,
       // forking: {
       //   url: `https://rpc.ankr.com/avalanche`,
       //   blockNumber: 33963320,
@@ -97,6 +99,7 @@ const config: HardhatUserConfig = {
     },
     localhost: {
       saveDeployments: true,
+      chainId: 31337,
     },
     arbitrum: {
       url: getRpcUrl("arbitrum"),
