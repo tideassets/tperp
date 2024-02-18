@@ -76,9 +76,11 @@ async function main() {
     const argStr = args.map((arg) => encodeArg(arg)).join(" ");
 
     try {
-      console.log("Verifying contract %s %s %s", name, address, argStr);
-      await setTimeout(200);
-      const isContractVerified = cache[address] || (await getIsContractVerified(address));
+      let isContractVerified = cache[address];
+      if (!isContractVerified) {
+        await setTimeout(200);
+        isContractVerified = await getIsContractVerified(address);
+      }
 
       if (isContractVerified) {
         cache[address] = true;
@@ -86,6 +88,7 @@ async function main() {
         continue;
       }
 
+      console.log("Verifying contract %s %s %s", name, address, argStr);
       const metadata = JSON.parse(deployment.metadata);
       const contractFQN = `${Object.keys(metadata.settings.compilationTarget)[0]}:${name}`;
       const contractArg = `--contract ${contractFQN}`;
