@@ -7,8 +7,8 @@ const func = createDeployFunction({
   getDeployArgs: async ({ dependencyContracts }) => {
     return [
       dependencyContracts.RoleStore.address, // roleStore
-      "tPerp DAO", // name
-      "tPerp_DAO", // symbol
+      "GMX DAO", // name
+      "GMX_DAO", // symbol
       18, // decimals
     ];
   },

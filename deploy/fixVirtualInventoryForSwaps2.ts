@@ -47,7 +47,6 @@ const func = async ({ deployments, gmx }: HardhatRuntimeEnvironment) => {
       [indexToken, longToken, shortToken] = getMarketTokenAddresses(marketConfig, tokens);
       const marketKey = getMarketKey(indexToken, longToken, shortToken);
       const onchainMarket = onchainMarketsByTokens[marketKey];
-      log("@@@, %s, %s", marketKey, onchainMarketsByTokens);
 
       const poolAmountLongToken = await read(
         "DataStore",
@@ -84,7 +83,7 @@ const func = async ({ deployments, gmx }: HardhatRuntimeEnvironment) => {
 };
 
 func.skip = async ({ network }: HardhatRuntimeEnvironment) => {
-  return ["arbitrumSepolia"].includes(network.name);
+  return !["arbitrumGoerli"].includes(network.name);
 };
 func.id = "fixVirtualInventoryForSwaps2";
 func.tags = ["FixVirtualInventoryForSwaps2"];

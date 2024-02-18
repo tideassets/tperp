@@ -16,7 +16,7 @@ const func = async ({ network }) => {
 func.tags = ["AddVirtualTokenIdToBtcMarketsTestnet"];
 func.id = "AddVirtualTokenIdToBtcMarketsTestnet";
 func.skip = ({ network }) => {
-  return network.name !== "avalancheFuji"; // && network.name !== "arbitrumSepolia";
+  return network.name !== "avalancheFuji" && network.name !== "arbitrumGoerli";
 };
 
 export default func;

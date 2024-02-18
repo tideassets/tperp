@@ -15,7 +15,7 @@ const rolesToRemove = {
   arbitrum: [],
   avalanche: [],
   avalancheFuji: [],
-  arbitrumSepolia: [],
+  arbitrumGoerli: [],
   avalancheFuji: [],
 };
 
